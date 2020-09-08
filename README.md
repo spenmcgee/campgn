@@ -12,7 +12,7 @@ Host github-spen
         IdentityFile ~/.ssh/id_rsa_spen
 ```
 
-Then make sure to add the remote using the `github-spen` hostname, like this: `git remote add origin git@github-spen:spenmcgee/campaignparty.git`
+Then make sure to add the remote using the `github-spen` hostname, like this: `git remote add origin git@github-spen:spenmcgee/campgn.git`
 
 To sign commits with a particular username and email (keeps it separate from other commits configured globally):
 
