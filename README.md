@@ -1,4 +1,4 @@
-# CampaignParty
+# campgn
 
 ## Git stuff
 

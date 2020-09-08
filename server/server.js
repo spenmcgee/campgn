@@ -1,0 +1,120 @@
+const http = require('http');
+const express = require('express');
+// const path = require('path');
+// const port = process.env.PORT || 4000;
+// const router = require('./server/router');
+// const nunjucks = require('nunjucks');
+// const fileUpload = require('express-fileupload');
+// const bodyParser = require('body-parser');
+// const cookieParser = require('cookie-parser');
+// const DATA_ROOT = process.env.DATA_ROOT || '/var/dd';
+// const MsgServer = require('./server/biz/MsgServer');
+// const MsgRollEventHandler = require('./server/biz/MsgRollEventHandler');
+// const MsgSexEventHandler = require('./server/biz/MsgSexEventHandler');
+// const GamesManager = require('./server/biz/GamesManager');
+// const logger = require("./server/logger");
+
+var app = express();
+var httpServer = http.createServer(app);
+// app.use(fileUpload());
+// app.use(cookieParser());
+// app.use(bodyParser.json({limit: "5mb"}));
+// app.use(bodyParser.urlencoded({ limit: "5mb", extended: false }));
+//
+// nunjucks.configure('./server/view', { express: app, noCache: true });
+// app.set('view engine', 'html');
+// app.use('/', router);
+// app.use('/client', express.static('client'));
+// app.use('/lib', express.static('node_modules'));
+// app.use('/asset', express.static(DATA_ROOT));
+//
+// var gm = new GamesManager();
+//
+// router.post('/:room/reset', (req, res) => {
+//   var room = req.params.room;
+//   var user = req.cookies["user"];
+//   var isGM = user=='GM';
+//   if (isGM) {
+//     gm.deleteGame(room);
+//   }
+//   res.redirect('/');
+// })
+//
+// router.get('/api/stats', (req, res) => {
+//   var stats = gm.getStats();
+//   res.json(stats);
+// })
+//
+// router.get('/app', (req, res) => {
+//   var room = req.cookies["room"];
+//   var user = req.cookies["user"];
+//   var isGM = user=='GM';
+//   res.render("app.html", {room:room, user:user, isGM:isGM});
+// })
+//
+// var msgServer = new MsgServer(3001);
+// msgServer.addHandler({
+//   match: data => data.meta == 'join',
+//   handler: (data, wss, client) => {
+//     msgServer.setClient(data, client);
+//     var gs = gm.getGameState(data.room);
+//     return [gs, {room:gs.room, user:data.user, meta:'mask', rects:gs.maskRects}];
+//   }
+// })
+// msgServer.addHandler({
+//   match: data => data.meta == 'piece',
+//   handler: data => {
+//     var gs = gm.getGameState(data.room);
+//     gs.addPiece(data);
+//     return [gs];
+//   }
+// })
+// msgServer.addHandler({
+//   match: data => data.meta == 'text',
+//   handler: (data, wss, ws) => {
+//     return [Object.assign({}, data)];
+//   }
+// })
+// msgServer.addHandler({
+//   match: data => data.meta == 'mask', //simple rebroadcast
+//   handler: (data, wss, ws) => {
+//     var gs = gm.getGameState(data.room);
+//     gs.setMask(data.rects);
+//     return [Object.assign({}, data)];
+//   }
+// })
+// msgServer.addHandler({
+//   match: data => data.meta == 'text',
+//   handler: new MsgRollEventHandler()
+// })
+// msgServer.addHandler({
+//   match: data => data.meta == 'text',
+//   handler: new MsgSexEventHandler()
+// })
+// msgServer.addHandler({
+//   match: data => data.meta == 'move',
+//   handler: (data, wss, ws) => {
+//     var gs = gm.getGameState(data.room);
+//     Object.values(gs.pieces).forEach(el => { //apply move to piece
+//       if (el.id == data.id) {
+//         el.localMatrix = data.localMatrix;
+//       }
+//     });
+//     return [gs];
+//   }
+// })
+// msgServer.addHandler({
+//   match: data => data.meta == 'kill',
+//   handler: (data, wss, ws) => {
+//     var gs = gm.getGameState(data.room);
+//     gs.pieces.forEach(el => { //apply move to piece
+//       if (el.id == data.id) {
+//         el.killed = true;
+//       }
+//     });
+//     return [gs];
+//   }
+// })
+//
+// logger.info("(server) DATA_ROOT", DATA_ROOT);
+app.listen(4000, () => console.log(`Listening on 4000 and 4001`));
