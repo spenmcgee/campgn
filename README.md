@@ -1,3 +1,28 @@
+# CampaignParty
+
+## Git stuff
+
+Used this ref to create multiple identities: https://medium.com/@therajanmaurya/git-push-pull-with-two-different-account-and-two-different-user-on-same-machine-a85f9ee7ec61
+
+But basically, the key is to use the `~/.ssh/config` and add a section:
+```
+Host github-spen
+        HostName github.com
+        User spenmcgee
+        IdentityFile ~/.ssh/id_rsa_spen
+```
+
+Then make sure to add the remote using the `github-spen` hostname, like this: `git remote add origin git@github-spen:spenmcgee/campaignparty.git`
+
+To sign commits with a particular username and email (keeps it separate from other commits configured globally):
+
+```
+git config --local user.name <username>
+git config --local user.email <email>
+```
+
+# React stuff
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
