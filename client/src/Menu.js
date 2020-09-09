@@ -15,18 +15,22 @@ export default function Menu() {
   function navBoard() {
     history.replace('/board');
   }
-  
+
   function navSettings() {
     history.replace('/settings');
   }
 
   return (
     <div className="Menu">
-      <ButtonGroup size="lg" aria-label="main nav">
-        <Button variant="" onClick={navBoard}><FaChessBoard /></Button>
+      <ButtonGroup aria-label="main nav">
+        {/*<Button variant="" onClick={navBoard}><FaChessBoard /></Button>
         <Button variant=""><FaUserNinja /></Button>
         <Button variant=""><FaCrop /></Button>
-        <Button variant="" onClick={navSettings}><FaCog /></Button>
+        <Button variant="" onClick={navSettings}><FaCog /></Button>*/}
+        <Button variant="" onClick={navBoard}>Game</Button>
+        <Button variant="">Characters</Button>
+        <Button variant="">Masking</Button>
+        <Button variant="" onClick={navSettings}>Settings</Button>
       </ButtonGroup>
     </div>
   )
