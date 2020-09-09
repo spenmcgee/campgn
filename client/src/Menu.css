@@ -1,0 +1,17 @@
+.Menu {
+  z-index: 2;
+  padding: 0px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  backdrop-filter: contrast(0.7);
+  /*font-size: 150%;*/
+}
+
+.Menu a, .Menu button {
+  color: #333;
+  padding: 0px;
+  margin: 0px;
+  /*font-size: 20px;
+  line-height: 30px;*/
+}

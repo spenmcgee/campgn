@@ -1,9 +1,12 @@
 import React from 'react';
-//import './App.css';
+import './Board.css';
+import Menu from './Menu';
 
 function Board() {
   return (
-    <div>the board</div>
+    <div className="Board">
+      <Menu />
+    </div>
   );
 }
 
