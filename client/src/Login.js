@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import logo from './logo.svg';
+import logo from './logo/monster2.svg';
 import { CookiesProvider } from 'react-cookie';
 import { useCookies } from 'react-cookie';
 
