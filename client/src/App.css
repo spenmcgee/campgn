@@ -1,5 +1,7 @@
+
+
 .App {
-  text-align: center;
+
 }
 
 .App-logo {
@@ -21,6 +23,10 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+}
+
+.Page {
+  padding: 20px;
 }
 
 .App-header {

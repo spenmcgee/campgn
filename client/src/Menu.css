@@ -1,6 +1,9 @@
 .Menu {
+  font: wingdings;
+}
+
+.Menu-floating {
   z-index: 2;
-  padding: 0px;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -8,10 +11,20 @@
   /*font-size: 150%;*/
 }
 
+.Menu-stationary {
+  background-color: cyan;
+  padding: 10px;
+}
+
 .Menu a, .Menu button {
   color: #333;
   padding: 5px;
   margin: 0px;
-  /*font-size: 20px;
-  line-height: 30px;*/
+  font-size: 12px;
+}
+
+.logo {
+  float: left;
+  height: 15px;
+  margin-right: 20px;
 }

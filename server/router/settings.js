@@ -19,7 +19,10 @@ router.post('/', (req, res) => {
     return;
   }
   var data = {
-    boardUrl: req.body.boardUrl
+    boardUrl: req.body.boardUrl,
+    assetSize: req.body.assetSize,
+    playerSize: req.body.playerSize,
+    moveStepSize: req.body.moveStepSize
   }
   fs.writeFileSync(path.join(DATA_ROOT, `${room}-config.json`), JSON.stringify(data));
   res.status(200).end();

@@ -5,10 +5,11 @@ import { FaUserNinja } from 'react-icons/fa';
 import { FaCog } from 'react-icons/fa';
 import './Menu.css';
 import { Link } from 'react-router-dom';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { Button } from 'react';
 import { useHistory } from 'react-router-dom';
+import logo from './logo/logo.svg';
 
-export default function Menu() {
+export default function Menu(props) {
 
   let history = useHistory();
 
@@ -21,17 +22,14 @@ export default function Menu() {
   }
 
   return (
-    <div className="Menu">
-      <ButtonGroup aria-label="main nav">
-        {/*<Button variant="" onClick={navBoard}><FaChessBoard /></Button>
-        <Button variant=""><FaUserNinja /></Button>
-        <Button variant=""><FaCrop /></Button>
-        <Button variant="" onClick={navSettings}><FaCog /></Button>*/}
-        <Button variant="" onClick={navBoard}>Game</Button>
-        <Button variant="">Characters</Button>
-        <Button variant="">Masking</Button>
-        <Button variant="" onClick={navSettings}>Settings</Button>
-      </ButtonGroup>
+    <div className={props.className}>
+      <table><tbody><tr>
+        <td><img src={logo} className="logo" alt="logo" /></td>
+        <td><button onClick={navBoard}>Game</button></td>
+        <td><button>Characters</button></td>
+        <td><button>Masking</button></td>
+        <td><button onClick={navSettings}>Settings</button></td>
+      </tr></tbody></table>
     </div>
   )
 

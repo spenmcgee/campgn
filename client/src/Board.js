@@ -5,7 +5,7 @@ import Menu from './Menu';
 function Board() {
   return (
     <div className="Board">
-      <Menu />
+      <Menu className="Menu Menu-floating" />
     </div>
   );
 }
