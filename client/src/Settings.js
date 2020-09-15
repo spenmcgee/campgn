@@ -5,7 +5,7 @@ import './Settings.css';
 
 function Settings() {
 
-  let [cookies, setCookie] = useCookies(['campgn']);
+  let [cookies] = useCookies(['campgn']);
   let [settings, setSettings] = useState({
     boardUrl: '/asset/_system-default.svg',
     assetSize: 100,

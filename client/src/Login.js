@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import logo from './logo/monster2.svg';
 import { CookiesProvider } from 'react-cookie';
 import { useCookies } from 'react-cookie';
-import { Button, Form, Row, Col } from 'react-bootstrap';
+import { Button, Form, Col } from 'react-bootstrap';
 
 function Login() {
 

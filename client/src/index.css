@@ -10,9 +10,3 @@ body, button {
   font-family: 'Roboto Mono', monospace;
   text-transform: uppercase;
 }
-
-button {
-  font-size: 25px;
-  padding: 8px 20px;
-  color: red;
-}
