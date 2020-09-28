@@ -1,7 +1,7 @@
 import React from 'react';
 import './Menu.css';
 import { useHistory } from 'react-router-dom';
-import logo from './logo/logo.svg';
+import logo from './img/logo.svg';
 
 export default function Menu(props) {
 

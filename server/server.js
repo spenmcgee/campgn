@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ limit: "5mb", extended: false }));
 
 app.use('/api', require('./router/api'));
 app.use('/api/settings', require('./router/settings'));
+app.use('/api/library', require('./router/library'));
 app.use('/asset', express.static(DATA_ROOT));
 //
 // var gm = new GamesManager();

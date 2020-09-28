@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Menu from './Menu';
-import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import CreateGame from './CreateGame';
+import ListGames from './ListGames';
+import './Library.css';
 
 function Library() {
 
-  let [cookies] = useCookies(['campgn']);
   let history = useHistory();
 
   function navList() {
@@ -27,15 +28,17 @@ function Library() {
         <button className="nav" onClick={navList}>List Games</button>
         <button className="nav" onClick={navCreate}>Create Game</button>
 
-
-
       <Switch>
         <Route exact path="/library">
           <h2>Featured Games</h2>
           <p>These are games that you can load and play.</p>
+          <ListGames/>
         </Route>
         <Route exact path="/library/create">
-          <h2>Create Your Own Game</h2>
+          <CreateGame/>
+        </Route>
+        <Route exact path="/library/create/:name">
+          <CreateGame/>
         </Route>
       </Switch>
 
