@@ -69,7 +69,7 @@ function CreateGame() {
     data.set('name', state.name);
     data.set('config', JSON.stringify(buildConfig(state, characterState), null, 2));
     data.set('files_board', state.boardFile);
-    Object.values(characterState).forEach(c => data.set(`files_${c.id}`, c.img));
+    Object.values(characterState).forEach(c => data.set(`files_${c.id}`, c.file));
     fetch('/api/library', {
       method: 'POST',
       body: data
@@ -89,8 +89,9 @@ function CreateGame() {
   function characterImageChange(e) {
     var reader = new FileReader();
     var id = e.target.name;
+    var f = e.target.files[0];
     reader.onload = function(im) {
-      var c = {...characterState[id], ['img']:im.target.result};
+      var c = {...characterState[id], 'img':im.target.result, 'file':f};
       setCharacterState({...characterState, [id]: c});
     }
     reader.readAsDataURL(e.target.files[0]);
@@ -121,7 +122,7 @@ function CreateGame() {
         <div key={c.id}>
           <p>Character {c.id}</p>
           <input type="file" accept="image/*" name={c.id} onChange={characterImageChange} />
-          <img id={c.id+"img"} className="preview" src={c.img||placeholder} alt={"Charater " + c.id} />
+          <img id={c.id+"img"} className="preview" src={c.img||placeholder} alt={"Character " + c.id} />
         </div>
       ))}
 

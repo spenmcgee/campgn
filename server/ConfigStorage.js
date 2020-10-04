@@ -47,13 +47,10 @@ class ConfigStorage {
     fs.writeFileSync(configFilepath, config);
 
     if (files) {
-      if (files.files_board) {
-        var boardFilepath = path.join(this.dataRoot, dirname, 'board.svg');
-        files.files_board.mv(boardFilepath);
-      }
-      Object.values(config.characters).forEach(c => {
-        var f = files[`files_${c.id}`];
-        var filepath = path.join(this.dataRoot, dirname, c.id+'.svg');
+      Object.keys(files).forEach(k => {
+        var f = files[k];
+        var filename = k.substr(6) + '.svg';
+        var filepath = path.join(this.dataRoot, dirname, filename);
         f.mv(filepath);
       })
     }

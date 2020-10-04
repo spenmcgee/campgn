@@ -30,7 +30,6 @@ router.post('/', (req, res) => {
   }
   console.log(`(router/library) Create game ${room}`);
   var cs = new ConfigStorage();
-console.log("here********000", req)
   cs.save(req.body.name, req.body.config, req.files);
   res.status(200).end();
 });
