@@ -61,7 +61,7 @@ function CreateGame() {
       boardImg.setAttribute('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
-    setState({...state, ['boardFile']: e.target.files[0]});
+    setState({...state, 'boardFile': e.target.files[0]});
   }
 
   function savePresets() {
