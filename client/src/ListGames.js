@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './ListGames.css';
+import { GameSingleton } from './domain/GameSingleton';
 
 const API_ROOT_URL = process.env.REACT_APP_API_ROOT_URL;
 
@@ -18,8 +19,14 @@ function ListGames() {
     fetchData();
   }, []);
 
-  function navEditGame(name, e) {
+  function editGame(name, e) {
     history.replace('/library/create/'+name);
+  }
+
+  function loadGame(name, e) {
+    var game = GameSingleton.getInstance();
+    game.loadGameByName(name);
+    history.replace('/board');
   }
 
   return (
@@ -31,8 +38,8 @@ function ListGames() {
           <img src={API_ROOT_URL+'/asset/'+g.name+'/board.svg'} alt={g.name} className="board" />
           <p>{g.description}</p>
           <p>
-            <button className="nav">Load Game</button>
-            <button className="nav" onClick={e => navEditGame(g.name)}>Edit Game</button>
+            <button className="nav" onClick={e => loadGame(g.name)}>Load Game</button>
+            <button className="nav" onClick={e => editGame(g.name)}>Edit Game</button>
           </p>
           <div style={{clear:"both"}}></div>
         </div>
