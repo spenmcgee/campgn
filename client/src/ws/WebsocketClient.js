@@ -1,7 +1,4 @@
-import { Cookie } from './Cookie.js';
-//import { Text } from './message/Text.js';
-//import { Join } from './message/Join.js';
-//import Semaphore from '/lib/semaphore-async-await/dist/Semaphore.js';
+import { Cookie } from '../util/Cookie.js';
 
 class WebsocketClient {
 
@@ -25,8 +22,7 @@ class WebsocketClient {
   }
 
   connect() {
-    var id = this.id, room = this.root, user = this.user;
-    var socket = new WebSocket(`ws://${location.hostname}:3001`);
+    var socket = new WebSocket(`ws://localhost:4001`);
     this.socket = socket;
     socket.onmessage = async e => {
       let data = JSON.parse(e.data);

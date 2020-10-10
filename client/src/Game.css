@@ -1,11 +1,11 @@
-.Board {
+.Game {
   margin: 0;
   padding: 0;
   overflow: hidden;
   font-family: arial;
 }
 
-.Board svg {
+.Game svg {
   position: fixed;
   top: 0;
   left: 0;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './Login';
-import Board from './Board';
+import Game from './Game';
 import Library from './Library';
 import Settings from './Settings';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -8,10 +8,11 @@ import './App.css';
 
 function App() {
   return (
+    <div className="App">
     <Router>
       <Switch>
-        <Route path="/board">
-          <Board />
+        <Route path="/game">
+          <Game />
         </Route>
         <Route path="/settings">
           <Settings />
@@ -24,6 +25,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    </div>
   );
 }
 

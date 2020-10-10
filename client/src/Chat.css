@@ -1,0 +1,23 @@
+.Chat {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  padding: 10px;
+  width: 300px;
+  z-index: 2;
+  backdrop-filter: contrast(0.9);
+}
+.Chat .newMessage {
+  margin-bottom: 5px;
+}
+.Chat .newMessage input {
+  margin-right: 5px;
+}
+.Chat .message {
+  color: rgba(0, 0, 0, 1);
+}
+.Chat .messageBg {
+  padding: 5px;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.5);
+}

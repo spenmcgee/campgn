@@ -3,6 +3,8 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const MsgServer = require('./ws/MsgServer');
+const MsgServerSetup = require('./ws/MsgServerSetup');
 
 const port = process.env.PORT || 4000;
 const DATA_ROOT = process.env.DATA_ROOT || '/var/dd';
@@ -23,6 +25,10 @@ app.use('/api', require('./router/api'));
 app.use('/api/settings', require('./router/settings'));
 app.use('/api/library', require('./router/library'));
 app.use('/asset', express.static(DATA_ROOT));
+
+var msgServer = new MsgServer(port+1);
+MsgServerSetup(msgServer);
+
 //
 // var gm = new GamesManager();
 //

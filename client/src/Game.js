@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import Menu from './Menu';
-import './Board.css';
+import './Game.css';
 import Snap from 'snapsvg-cjs';
-import { GameSingleton } from './domain/GameSingleton';
 import 'snap.svg.zpd';
+import { WebsocketClient } from './ws/WebsocketClient';
+import Chat from './Chat';
 
 async function loadSvg(url) {
   return new Promise(r => Snap.load(url, data => r(data)));
@@ -16,21 +17,24 @@ async function draw(paper, boardSvgUrl) {
   //var zpdGroup = Snap.select('#snapsvg-zpd-'+this.paper.id);
 }
 
-function Board() {
+function Game(props) {
+
+  var wsclient = new WebsocketClient();
+  //setupTextEvent(wsclient, chat);
 
   useEffect(() => {
-    var game = GameSingleton.getInstance();
     var paper = Snap('#board');
-    console.log("here we are", Snap, paper)
-    draw(paper, `/asset/${game.name}/board.svg`);
+    if (props.name)
+      draw(paper, `/asset/${props.name}/board.svg`);
   });
 
   return (
-    <div className="Board">
+    <div className="Game">
       <Menu className="Menu Menu-floating" />
+      <Chat wsclient={wsclient} />
       <svg id="board"></svg>
     </div>
   );
 }
 
-export default Board;
+export default Game;

@@ -4,6 +4,7 @@ class GameSingleton {
     if (!GameSingleton.instance) {
       this.name = null;
       this.config = null;
+      this.init = true;
       GameSingleton.instance = this;
     }
     return GameSingleton.instance;

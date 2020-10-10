@@ -20,7 +20,7 @@ function Login() {
     setCookie("user", form.user);
     setCookie("color", form.color);
     setCookie("email", form.email);
-    history.replace("/board");
+    history.replace("/game");
   }
 
   function handleChange(event) {

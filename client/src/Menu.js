@@ -7,8 +7,8 @@ export default function Menu(props) {
 
   let history = useHistory();
 
-  function navBoard() {
-    history.replace('/board');
+  function navGame() {
+    history.replace('/game');
   }
 
   function navSettings() {
@@ -23,7 +23,7 @@ export default function Menu(props) {
     <div className={props.className}>
       <table><tbody><tr>
         <td><img src={logo} className="logo" alt="logo" /></td>
-        <td><button onClick={navBoard}>Game</button></td>
+        <td><button onClick={navGame}>Game</button></td>
         <td><button onClick={navLibrary}>Library</button></td>
         <td><button>Masking</button></td>
         <td><button onClick={navSettings}>Settings</button></td>
