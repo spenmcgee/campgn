@@ -49,8 +49,8 @@ class MsgServer {
   }
 
   onMessage(json, wss, ws) {
-    logger.debug("(MsgServer.onMessage) incoming data", json);
     var data = JSON.parse(json);
+    logger.debug("(MsgServer.onMessage) incoming data", data);
     var outboundDataArray = this.messageHandlers.map(h => {
       if (h.match(data)) {
         var r;
@@ -63,12 +63,13 @@ class MsgServer {
     .flat()
     .filter(x=>x);
     outboundDataArray = outboundDataArray.map(x => x.projectForWire ? x.projectForWire() : x);
-    logger.debug("(MsgServer.onMessage) outbound data", JSON.stringify(outboundDataArray));
+    logger.debug("(MsgServer.onMessage) outbound data", outboundDataArray);
     this.broadcast(outboundDataArray);
   }
 
   wireup(wss) {
     wss.on('connection', ws => {
+      logger.debug("New connection")
       ws.on('message', json => this.onMessage(json, wss, ws));
     })
   }

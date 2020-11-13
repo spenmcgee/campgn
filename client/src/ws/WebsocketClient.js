@@ -1,16 +1,18 @@
-import { Cookie } from '../util/Cookie.js';
-
 class WebsocketClient {
 
-  constructor(messageHandler) {
-    this.id = Cookie.getCookie('id');
-    this.user = Cookie.getCookie('user');
-    this.room = Cookie.getCookie('room');
+  constructor() {
     this.messageHandlers = [];
+  }
+
+  init(cookies) {
+    this.id = cookies.id;
+    this.user = cookies.user;
+    this.room = cookies.room;
   }
 
   addMessageHandler(handler) {
     this.messageHandlers.push(handler);
+    console.log("(WebSocketClient.addMessageHandler) num handlers:", this.messageHandlers.length)
   }
 
   onOpen(handler) {
@@ -18,11 +20,14 @@ class WebsocketClient {
   }
 
   send(data) {
+    if (typeof data == 'object')
+      data = JSON.stringify(data);
     this.socket.send(data);
   }
 
-  connect() {
-    var socket = new WebSocket(`ws://localhost:4001`);
+  connect(cookies) {
+    this.init(cookies);
+    var socket = new WebSocket(`ws://localhost:4001`); //FIXME
     this.socket = socket;
     socket.onmessage = async e => {
       let data = JSON.parse(e.data);
@@ -37,7 +42,8 @@ class WebsocketClient {
       }
     }
     socket.onopen = e => {
-      this.onOpenHandler(e);
+      if (this.onOpenHandler)
+        this.onOpenHandler(e);
     }
   }
 

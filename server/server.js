@@ -5,14 +5,10 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const MsgServer = require('./ws/MsgServer');
 const MsgServerSetup = require('./ws/MsgServerSetup');
-
-const port = process.env.PORT || 4000;
-const DATA_ROOT = process.env.DATA_ROOT || '/var/dd';
-// const MsgServer = require('./server/biz/MsgServer');
-// const MsgRollEventHandler = require('./server/biz/MsgRollEventHandler');
-// const MsgSexEventHandler = require('./server/biz/MsgSexEventHandler');
-// const GamesManager = require('./server/biz/GamesManager');
 const logger = require("./logger");
+const port = process.env.PORT || 4000;
+const DATA_ROOT = process.env.DATA_ROOT || '/var/campng';
+const GamesManager = require('./biz/GamesManager');
 
 var app = express();
 var httpServer = http.createServer(app);
@@ -26,12 +22,14 @@ app.use('/api/settings', require('./router/settings'));
 app.use('/api/library', require('./router/library'));
 app.use('/asset', express.static(DATA_ROOT));
 
+var gm = new GamesManager();
 var msgServer = new MsgServer(port+1);
-MsgServerSetup(msgServer);
+MsgServerSetup(msgServer, gm);
 
 //
 // var gm = new GamesManager();
 //
 //
-logger.info("(server) DATA_ROOT", DATA_ROOT);
+logger.info("(server) DATA_ROOT: " + DATA_ROOT);
+logger.info("(server) LOGLEVEL: " + process.env.LOGLEVEL);
 app.listen(port, () => logger.info(`(server) Listening on ${port} and ${port+1}`));

@@ -5,11 +5,14 @@ var label = winston.format.label;
 var printf = winston.format.printf;
 var json = winston.format.json;
 
+const LOGLEVEL = process.env.LOGLEVEL || 'info';
+
 const format1 = printf(({ level, message, label, timestamp }) => {
   return `${timestamp} [${label}] ${level}: ${message}`;
 });
 
 var logger = winston.createLogger({
+  level: LOGLEVEL,
   exitOnError: false,
   levels: (winston.config.syslog.levels),
   transports: [new winston.transports.Console()],

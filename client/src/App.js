@@ -5,6 +5,9 @@ import Library from './Library';
 import Settings from './Settings';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import { WebsocketClient } from './ws/WebsocketClient';
+
+var wsclient = new WebsocketClient();
 
 function App() {
   return (
@@ -12,7 +15,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/game">
-          <Game />
+          <Game wsclient={wsclient} />
         </Route>
         <Route path="/settings">
           <Settings />

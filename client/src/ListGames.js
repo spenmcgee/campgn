@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './ListGames.css';
-import { GameSingleton } from './domain/GameSingleton';
 
 const API_ROOT_URL = process.env.REACT_APP_API_ROOT_URL;
 
@@ -24,9 +23,9 @@ function ListGames() {
   }
 
   function loadGame(name, e) {
-    var game = GameSingleton.getInstance();
-    game.loadGameByName(name);
-    history.replace('/board');
+    //var game = GameSingleton.getInstance();
+    //game.loadGameByName(name);
+    history.replace('/game');
   }
 
   return (

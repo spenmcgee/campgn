@@ -1,7 +1,7 @@
 const MsgRollEventHandler = require('./MsgRollEventHandler');
 const MsgSexEventHandler = require('./MsgSexEventHandler');
 
-module.exports = function(msgServer) {
+module.exports = function(msgServer, gm) {
 
   msgServer.addHandler({
     match: data => data.meta == 'join',

@@ -1,7 +1,7 @@
 {
   "name": "campgn",
   "private": true,
-  "workspaces": ["client", "server"],
+  "workspaces": ["client", "server", "common"],
   "scripts": {
     "client": "yarn workspace client start",
     "server": "yarn workspace server start",

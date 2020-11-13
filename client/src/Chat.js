@@ -1,32 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Text from 'common/message/Text';
 import './Chat.css';
+import { useCookies } from 'react-cookie';
 
 function Chat(props) {
 
+  let [cookies] = useCookies(['campgn']);
   var [newMessage, setNewMessage] = useState("");
   var [messages, setMessages] = useState([]);
-  var wsclient = props.wsclient;
-
-  function handleData(data) {
-    setMessages(messages => {
-      return messages.concat(`${data.user}: ${data.messageText}`);
-    })
-  }
-
-  wsclient.addMessageHandler({
-    match: data => data.meta === 'text',
-    handler: async data => {
-      handleData(data);
-    }
-  })
+  const wsclient = props.wsclient;
 
   useEffect(() => {
+    console.log("Chat.useEffect")
+    wsclient.addMessageHandler({
+      match: data => data.meta === 'text',
+      handler: async data => {
+        console.log("Chat.useEffect 3")
+        handleData(data);
+      }
+    })
+  }, [wsclient])
 
-  });
+  function handleData(data) {
+    console.log("Chat.handleData")
+    setMessages(messages => [`${data.user}: ${data.messageText}`, ...messages]);
+  }
 
-  function onMessage(e) {
+  function onSendMessage(e) {
     e.preventDefault();
-    setMessages(message => messages.concat(`blahhh: ${newMessage}`));
+    console.log("Chat.onSendMessage", wsclient)
+    setMessages(messages => [`should be message: ${newMessage}`, ...messages]);
+    wsclient.send(new Text({
+      id: cookies.id,
+      user: cookies.user,
+      room: cookies.room,
+      messageText: newMessage
+    }))
     setNewMessage('');
   }
 
@@ -37,8 +46,8 @@ function Chat(props) {
   return (
     <div className="Chat">
       <div className="newMessage">
-        <input type="text" name="message" value={newMessage} onChange={onNewMessageChange} />
-        <input type="submit" value="Send" onClick={onMessage} />
+        <input type="text" name="message" onChange={onNewMessageChange} />
+        <input type="submit" value="Send" onClick={onSendMessage}/>
       </div>
       {messages.map((value, index) => {
         return (
